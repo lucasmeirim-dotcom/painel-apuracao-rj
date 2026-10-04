@@ -122,7 +122,7 @@
             : `<p class="empty">Nenhum candidato em destaque. Ajuste "destaque_partidos" ou "destaque_numeros" no config.ini.</p>`}
         </section>
 
-        <section class="panel">
+        ${dc.cargo === "5" ? "" : `<section class="panel">
           <div class="panel-h"><h2>Cadeiras por partido ou federação</h2>
             <span class="note">${totalVag ? totalVag + " vagas distribuídas" : "distribuição ainda não informada"}${dc.qe ? " · quociente eleitoral " + fmt.format(dc.qe) : ""}</span></div>
           <div class="seats">${dc.agremiacoes.filter((a) => a.vag > 0).map((a) => {
@@ -130,7 +130,7 @@
             const max = Math.max(...dc.agremiacoes.map((z) => z.vag || 0), 1);
             return `<div class="seat ${dst ? "dest" : ""}"><span class="nm" title="${esc(a.nm)} ${esc(a.com)}">${esc(titulo(a.nm))}</span><span class="bar"><i style="width:${(100 * a.vag) / max}%"></i></span><span class="q">${a.vag}</span></div>`;
           }).join("") || `<p class="empty">As vagas aparecem aqui quando o TSE começar a projetar a distribuição.</p>`}</div>
-        </section>
+        </section>`}
 
         <section class="panel">
           <div class="panel-h"><h2>Ranking de candidatos</h2><span class="note">clique numa linha para ver no mapa</span></div>
