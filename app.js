@@ -122,7 +122,7 @@
             : `<p class="empty">Nenhum candidato em destaque. Ajuste "destaque_partidos" ou "destaque_numeros" no config.ini.</p>`}
         </section>
 
-        ${dc.cargo === "5" ? "" : `<section class="panel">
+        ${["3", "5"].includes(dc.cargo) ? "" : `<section class="panel">
           <div class="panel-h"><h2>Cadeiras por partido ou federação</h2>
             <span class="note">${totalVag ? totalVag + " vagas distribuídas" : "distribuição ainda não informada"}${dc.qe ? " · quociente eleitoral " + fmt.format(dc.qe) : ""}</span></div>
           <div class="seats">${dc.agremiacoes.filter((a) => a.vag > 0).map((a) => {
